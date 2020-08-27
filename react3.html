@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>
+            Third One
+        </title>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+    </head>
+    <body bgcolor="#D0FF00">
+        <font face="Verdana">
+        <center><h1>Dhoni and Ziva Conversation</h1>
+        <div id="react-container" style="margin-left: 30px; margin-top: 30px;"></div>
+        <script type='text/babel'>
+            
+            class MyComponent extends React.Component
+            {
+
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        checked: false
+                    }
+                }
+
+                onChangeHandle = () => {
+                    this.setState({ checked: !this.state.checked })
+                }
+
+                render(){
+                    var msg;
+                    if (this.state.checked)
+                    {
+                        msg = "checked"
+                    }
+                    else
+                    {
+                        msg = "unchecked"
+                    }
+                    return (
+                        <div>
+                            <input type='checkbox' onChange={ this.onChangeHandle }/>
+                            <p> The box is {msg} </p>
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<MyComponent/>,document.getElementById('react-container'));
+        </script>
+        </font>
+    </center>
+    </body>
+</html>

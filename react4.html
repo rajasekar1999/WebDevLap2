@@ -37,17 +37,36 @@
             class MyComponent extends React.Component
             {
 
-                answer(){
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        editing: false
+                    }
+                }
+
+                answer = () => {
+                    this.setState( { editing: true } )
                     alert('Nalla Iruken');
                 }
 
-                answer1() {
+                answer1 = () => {
+                    this.setState( { editing: false} )
                     alert('Theek hai bha')
                 }
 
-                render(){
+                renderForm = () => {
+                    return(
+                        <div className="note">
+                            <textarea></textarea>
+                            <button onClick={this.save}>Save</button>
+                        </div>
+                    )
+                }
+                
+
+                renderDisplay = () => {
                     return (
-                        <div className="square-code">
+                        <div>
                             <div className="h"></div>
                             <span>
                             <button onClick={this.answer}> Epdi Irukeenga? </button>
@@ -56,6 +75,16 @@
                             </span>
                         </div>
                     )
+                }
+
+                render = () => {
+                    if (this.state.editing)
+                    {
+                        return this.renderForm()
+                    }
+                    else {
+                        return this.renderDisplay()
+                    }
                 }
             }
             ReactDOM.render(<MyComponent/>,document.getElementById('react-container'));
