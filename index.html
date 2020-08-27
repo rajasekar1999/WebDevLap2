@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>
+            First One
+        </title>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="react-container"></div>
+        <script type='text/babel'>
+
+            const MyComponent2 = () => {
+                return <div>
+                            <ol>
+                                <li>First Rule of Fight Club: Do not Talk about Fight Club</li>
+                                <li>Refer First Rule of Fight Club</li>
+                            </ol>
+                        </div>
+            }
+            
+            class MyComponent extends React.Component
+            {
+                render()
+                {
+                    return <div>
+                                <h1> You know what? I don't know why people prefer React to Flask. </h1>
+                                <p> That was way more simple and easier </p>
+                            </div>
+                }
+            }
+            ReactDOM.render(
+                <div>
+                <ul>
+                    <li>Mahendra Singh Dhoni</li>
+                    <li>Sakshi Singh Dhoni</li>
+                    <li>Ziva Singh Dhoni</li>
+                    <li>Virat Kohli</li>
+                    <li>Rohit Gurunath Sharma</li>
+                </ul>
+                <MyComponent2/>
+                <div>
+                    <MyComponent/>
+                </div>
+                </div>,
+                document.getElementById('react-container')
+            )
+        </script>
+    </body>
+</html>
