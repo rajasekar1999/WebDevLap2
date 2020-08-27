@@ -7,8 +7,9 @@
         <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     </head>
-    <body>
-        <div id="react-container"></div>
+    <body bgcolor="turquoise">
+        <font face="Verdana">
+        <div id="react-container" style="margin-left: 30px; margin-top: 30px;"></div>
         <script type='text/babel'>
 
             const MyComponent2 = () => {
@@ -25,8 +26,10 @@
                 render()
                 {
                     return <div>
-                                <h1> You know what? I don't know why people prefer React to Flask. </h1>
+                                <h2>The message is {this.props.mess }</h2>
+                                <h3> You know what? I don't know why people prefer React to Flask. </h3>
                                 <p> That was way more simple and easier </p>
+                                <p> {this.props.children} </p>
                             </div>
                 }
             }
@@ -41,11 +44,14 @@
                 </ul>
                 <MyComponent2/>
                 <div>
-                    <MyComponent/>
+                    <MyComponent mess="Yeah but Why?">Hello</MyComponent>
+                    <MyComponent mess="Yeah but How?">It's Me</MyComponent>
+                    <MyComponent mess="Yeah but what?">I was wondering</MyComponent>
                 </div>
                 </div>,
                 document.getElementById('react-container')
             )
         </script>
+        </font>
     </body>
 </html>
