@@ -25,6 +25,10 @@
             .f {
                 padding-left:30px;
             }
+
+            .k {
+                padding-top:10px;
+            }
         </style>
     
     </head>
@@ -37,37 +41,45 @@
             class MyComponent extends React.Component
             {
 
-                constructor(props){
+                constructor(props)
+                {
                     super(props);
                     this.state = {
-                        editing: false
+                        flag:false
                     }
                 }
 
+                save = () => {
+                    this.state = { flag:true }
+                }
+
                 answer = () => {
-                    this.setState( { editing: true } )
+                    this.setState( { flag: true } )
                     alert('Nalla Iruken');
                 }
 
                 answer1 = () => {
-                    this.setState( { editing: false} )
+                    this.setState( { flag: false} )
                     alert('Theek hai bha')
-                }
+                }                
 
                 renderForm = () => {
-                    return(
-                        <div className="note">
-                            <textarea></textarea>
+                    return (
+                        <div className="square-code">
+                            <div className="k"></div>
+                            <p>{this.props.children}</p>
+                            <textarea rows='5' cols='30'></textarea>
+                            <div className="k"></div>
                             <button onClick={this.save}>Save</button>
                         </div>
                     )
                 }
-                
 
-                renderDisplay = () => {
+                renderDisplay  = () => {
                     return (
-                        <div>
+                        <div className="square-code">
                             <div className="h"></div>
+                            <p>{this.props.children}</p>
                             <span>
                             <button onClick={this.answer}> Epdi Irukeenga? </button>
                             <span className="f"></span>
@@ -78,16 +90,16 @@
                 }
 
                 render = () => {
-                    if (this.state.editing)
+                    if(this.state.flag==true)
                     {
                         return this.renderForm()
                     }
-                    else {
+                    else{
                         return this.renderDisplay()
                     }
                 }
             }
-            ReactDOM.render(<MyComponent/>,document.getElementById('react-container'));
+            ReactDOM.render(<MyComponent>Questions and Answers</MyComponent>,document.getElementById('react-container'));
         </script>
         </font>
     </center>
