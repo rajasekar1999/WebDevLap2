@@ -50,6 +50,8 @@
                 }
 
                 save = () => {
+                    var val = this.refs.text.value
+                    alert(val)
                     this.state = { flag:true }
                 }
 
@@ -68,7 +70,7 @@
                         <div className="square-code">
                             <div className="k"></div>
                             <p>{this.props.children}</p>
-                            <textarea rows='5' cols='30'></textarea>
+                            <textarea ref="text" rows='5' cols='30'></textarea>
                             <div className="k"></div>
                             <button onClick={this.save}>Save</button>
                         </div>
