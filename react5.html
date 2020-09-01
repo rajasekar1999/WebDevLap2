@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <title>
+            Fourth One
+        </title>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+        <style>
+            .note {
+                width: 300px;
+                height: 300px;
+                background-color: blueviolet;
+                border-radius: 5%;
+                border-color:brown;
+                border-top:30px;
+            }
+
+            .h {
+                margin-top:30px;
+                padding-top: 40px;
+            }
+
+            .f {
+                padding-left:30px;
+            }
+
+            .k {
+                padding-top:10px;
+            }
+        </style>
+    
+    </head>
+    <body bgcolor="#D0FF00">
+        <font face="Verdana">
+        <center><h1>Notes Taking Apps</h1>
+        <div id="react-container" style="margin-left: 30px; margin-top: 30px;"></div>
+        <script type='text/babel'>
+            
+            class Note extends React.Component
+            {
+
+                constructor(props)
+                {
+                    super(props);
+                    this.state = {
+                        flag:false,
+                        content: 'Hi'
+                    }
+                }
+
+                dummy = () => {
+                    this.renderDisplay();
+                }
+
+                save = () => {
+                    var val = this.refs.text.value
+                    alert(val)
+                    this.state = { flag:false, content:val }
+                    this.renderDisplay()
+                }
+
+                edit = () => {
+                    this.setState( { flag: true } )
+                    alert('Nalla Iruken');
+                }
+
+                clear = () => {
+                    this.setState( { flag: false, content:''} )
+                    alert('Theek hai bha')
+                }                
+
+                renderForm = () => {
+                    return (
+                        <div className="note">
+                            <div className="k"></div>
+                            <p>{this.props.children}</p>
+                            <textarea ref="text" rows='5' cols='30'></textarea>
+                            <div className="k"></div>
+                            <button onClick={this.save}>Save</button>
+                            <div className="k"></div>
+                            <button onClick={this.dummy}>Sve</button>
+                        </div>
+                    )
+                }
+
+                renderDisplay  = () => {
+                    return (
+                        <div className="note">
+                            <div className="h"></div>
+                            <p>{this.props.children}</p>
+                            <span>
+                            <button onClick={this.edit}> Edit </button>
+                            <span className="f"></span>
+                            <button onClick={this.clear}> Clear </button>
+                            </span>
+                            <div className="h"></div>
+                            {this.state.content}
+                        </div>
+                    )
+                }
+
+                render = () => {
+                    if(this.state.flag==true)
+                    {
+                        return this.renderForm()
+                    }
+                    else{
+                        return this.renderDisplay()
+                    }
+                }
+            }
+            ReactDOM.render(<Note>Questions and Answers</Note>,document.getElementById('react-container'));
+        
+            // class Board extends React.Component {
+
+            //     constructor(props){
+            //         super(props);
+            //         this.state = {
+            //             notes: [
+            //                 {id: 0, note: 'Call Rahul'},
+            //                 {id: 1, note: 'Make Prototype'},
+            //                 {id: 2, note: 'Submit Project'},
+            //                 {id: 3, note: 'Send Rahul Email'}
+            //             ]
+            //         }
+            //     }
+
+            //     update = ( newText, id ) => {
+            //         var notes = this.state.notes.map(
+            //             note => (note.id !== id) ?
+            //             note:
+            //             {
+            //                 ...note,
+            //                 note: newText
+            //             }
+            //         )
+            //         this.setState({notes})
+            //     }
+
+            //     remove = ( id ) => {
+            //         var notes = this.state.notes.filter( note => note.id !== id)
+            //         this.setState({note})
+            //     }
+
+            //     eachNote = ( note ) => {
+            //         return (<Note key={i}
+            //                     id = {note.id}
+            //                     onChange = {this.update}
+            //                     onRemove = {this.remove}>
+            //                     {note.note}</Note>)
+            //     }
+
+            //     render() {
+            //         return (
+            //             <div className="board">
+            //             {this.state.notes.map(this.eachNote)}
+            //             </div>
+            //         )
+            //     }
+            // }
+        
+            // ReactDOM.render(<Board count={10}/>,document.getElementById('react-container'))
+
+            // class Board extends React.Component{
+            //     render() {
+            //         return (<div>
+            //         <Note> Note 1 </Note>
+            //         <Note> Note 2 </Note>
+            //         <Note> Note 3 </Note>
+            //         <Note> Note 4 </Note>
+            //         <Note> Note 5 </Note>
+            //         </div>
+            //         )
+            //     }
+            // }
+            // ReactDOM.render(<Board></Board>,document.getElementById('react-container'));
+        </script>
+        </font>
+    </center>
+    </body>
+</html>
